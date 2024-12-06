@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.12
 WORKDIR /app
 COPY . /app
-CMD ["python3", "main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
