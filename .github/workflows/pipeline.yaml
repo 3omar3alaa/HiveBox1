@@ -33,9 +33,10 @@ jobs:
         with:
           dockerfile: "Dockerfile"
   
-
   build-and-push-image:
-    runs-on: ubuntu-latest
+    needs: [linting, lint-dockerfile]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
