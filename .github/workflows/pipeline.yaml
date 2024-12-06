@@ -32,9 +32,29 @@ jobs:
         uses: hadolint/hadolint-action@master
         with:
           dockerfile: "Dockerfile"
-  
-  build-and-push-image:
+  test:
     needs: [linting, lint-dockerfile]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests with pytest
+        run: |
+          pytest
+
+  build-and-push-image:
+    needs: [test]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
