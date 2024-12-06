@@ -9,3 +9,14 @@ The HiveBox project is divided into phases where each phase contains incremental
 ### Phase 2
 1. Create a function that print current app version
 2. Create a Dockerfile, build the Docker image and run it locally
+
+### Phase 3
+run locally using
+linux
+python3 -m uvicorn main:app --reloads
+
+windows
+run locally using
+python.exe -m uvicorn main:app --reload
+
+link to use [Github Packages](https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-docker-images)
