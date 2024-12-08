@@ -7,16 +7,26 @@ The HiveBox project is divided into phases where each phase contains incremental
 
 ## Phases
 ### Phase 2
+The features implemented in this phase
 1. Create a function that print current app version
 2. Create a Dockerfile, build the Docker image and run it locally
 
 ### Phase 3
-run locally using
-linux
+The features implemented in this phase
+1. Implement using FastAPI
+2. Add Version API
+3. Add Temperature API that returns the avg temperature of three sensors
+4. Add Unit tests
+5. Add linting job in the CI pipeline
+6. Build Docker image and push to Github Container Registry (GHCR) in the CI/CD pipeline. Refer to this [link](https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-docker-images) for more details
+7. Integrate OpenSSF scorecard
+
+Use the following commands to run the code
+**Linux**
+```
 python3 -m uvicorn main:app --reloads
-
-windows
-run locally using
+```
+**Windows**
+```
 python.exe -m uvicorn main:app --reload
-
-link to use [Github Packages](https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-docker-images)
+```
