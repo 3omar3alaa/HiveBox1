@@ -12,7 +12,7 @@ on:
   schedule:
     - cron: '0 0 * * 1' # run at 00:00 on Monday
   push:
-    branches: [ "main" ]
+    branches: [ "main", "openssf-fixes" ]
 
 # Declare default permissions as read only.
 permissions: read-all
