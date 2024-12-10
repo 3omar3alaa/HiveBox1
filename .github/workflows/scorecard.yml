@@ -12,7 +12,7 @@ on:
   schedule:
     - cron: '0 0 * * 1' # run at 00:00 on Monday
   push:
-    branches: [ "main", "openssf-fixes" ]
+    branches: [ "main" ]
 
 # Declare default permissions as read only.
 permissions: read-all
@@ -20,7 +20,7 @@ permissions: read-all
 jobs:
   analysis:
     name: Scorecard analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       # Needed to upload the results to code-scanning dashboard.
       security-events: write
