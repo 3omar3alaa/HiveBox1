@@ -23,15 +23,21 @@ jobs:
         egress-policy: audit
 
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    - name: Harden Runner
+      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      with:
+        egress-policy: audit
+
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
     - name: Set up Python 3.12
       uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
       with:
         python-version: 3.12
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip==24.3.1 --hash=sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
+        python -m pip install --upgrade pip==24.3.1 --require-hashes --hash=sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
         pip install --require-hashes -r requirements.txt
-        pip install pylint==3.3.2 --hash=sha256:77f068c287d49b8683cd7c6e624243c74f92890f767f106ffa1ddf3c0a54cb7a
+        pip install pylint==3.3.2 --require-hashes --hash=sha256:77f068c287d49b8683cd7c6e624243c74f92890f767f106ffa1ddf3c0a54cb7a
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
@@ -69,6 +75,11 @@ jobs:
         with:
           egress-policy: audit
 
+      - name: Harden Runner
+        uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+        with:
+          egress-policy: audit
+
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
@@ -79,7 +90,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip==24.3.1 --hash=sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
+          python -m pip install --upgrade pip==24.3.1 --require-hashes --hash=sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
           pip install --require-hashes -r requirements.txt
 
       - name: Run tests with pytest
