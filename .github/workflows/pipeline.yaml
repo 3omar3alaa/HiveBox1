@@ -71,7 +71,7 @@ jobs:
 
   build-and-push-image:
     needs: [test]
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') || github.event_name == 'release'
     runs-on: ubuntu-24.04
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
