@@ -35,7 +35,7 @@ jobs:
         python-version: 3.12
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip==24.3.1 --require-hashes --hash=sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
+        python -m pip install --upgrade pip==24.3.1 
         pip install --require-hashes -r requirements.txt
         pip install pylint==3.3.2 --require-hashes --hash=sha256:77f068c287d49b8683cd7c6e624243c74f92890f767f106ffa1ddf3c0a54cb7a
     - name: Analysing the code with pylint
@@ -90,7 +90,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip==24.3.1 --require-hashes --hash=sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
+          python -m pip install --upgrade pip==24.3.1 
           pip install --require-hashes -r requirements.txt
 
       - name: Run tests with pytest
